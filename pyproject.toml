@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-inspector-mcp"
+version = "0.1.0"
+description = "MCP server exposing PDF structural inspection (chars, words, shapes, images, tables) built on pdfplumber."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["mcp", "pdf", "pdfplumber", "inspector"]
+dependencies = [
+    "mcp>=2.3",
+    "pdfplumber>=0.11",
+    "Pillow>=10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "reportlab",
+]
+
+[project.scripts]
+pdf-inspector-mcp = "pdf_inspector_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
