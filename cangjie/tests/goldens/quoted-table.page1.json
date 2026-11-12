@@ -1,0 +1,243 @@
+{
+  "width": 612.0,
+  "height": 792.0,
+  "chars": [
+    {
+      "type": "char",
+      "x0": 60.0,
+      "y0": 707.93,
+      "x1": 65.56,
+      "y1": 717.93,
+      "text": "a",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 65.56,
+      "y0": 707.93,
+      "x1": 68.34,
+      "y1": 717.93,
+      "text": ",",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 68.34,
+      "y0": 707.93,
+      "x1": 71.89,
+      "y1": 717.93,
+      "text": "\"",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 71.89,
+      "y0": 707.93,
+      "x1": 77.45,
+      "y1": 717.93,
+      "text": "b",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 60.0,
+      "y0": 695.93,
+      "x1": 65.0,
+      "y1": 705.93,
+      "text": "c",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 210.0,
+      "y0": 697.93,
+      "x1": 215.56,
+      "y1": 707.93,
+      "text": "p",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 215.56,
+      "y0": 697.93,
+      "x1": 217.78,
+      "y1": 707.93,
+      "text": "l",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 217.78,
+      "y0": 697.93,
+      "x1": 223.34,
+      "y1": 707.93,
+      "text": "a",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 223.34,
+      "y0": 697.93,
+      "x1": 225.56,
+      "y1": 707.93,
+      "text": "i",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 225.56,
+      "y0": 697.93,
+      "x1": 231.12,
+      "y1": 707.93,
+      "text": "n",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    }
+  ],
+  "words": [
+    {
+      "type": "word",
+      "x0": 60.0,
+      "y0": 707.93,
+      "x1": 77.45,
+      "y1": 717.93,
+      "text": "a,\"b",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "page": 1
+    },
+    {
+      "type": "word",
+      "x0": 60.0,
+      "y0": 695.93,
+      "x1": 65.0,
+      "y1": 705.93,
+      "text": "c",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "page": 1
+    },
+    {
+      "type": "word",
+      "x0": 210.0,
+      "y0": 697.93,
+      "x1": 231.12,
+      "y1": 707.93,
+      "text": "plain",
+      "fontname": "Helvetica",
+      "size": 10.0,
+      "page": 1
+    }
+  ],
+  "rects": [
+    {
+      "type": "rect",
+      "x0": 50.0,
+      "y0": 650.0,
+      "x1": 350.0,
+      "y1": 730.0,
+      "fill": true,
+      "stroke": true,
+      "color": "0",
+      "width": 1.0,
+      "page": 1
+    }
+  ],
+  "lines": [
+    {
+      "type": "line",
+      "x0": 200.0,
+      "y0": 650.0,
+      "x1": 200.0,
+      "y1": 730.0,
+      "stroke": true,
+      "color": "0",
+      "width": 1.0,
+      "page": 1
+    },
+    {
+      "type": "line",
+      "x0": 50.0,
+      "y0": 690.0,
+      "x1": 350.0,
+      "y1": 690.0,
+      "stroke": true,
+      "color": "0",
+      "width": 1.0,
+      "page": 1
+    }
+  ],
+  "curves": [],
+  "images": [],
+  "tables": [
+    {
+      "type": "table",
+      "x0": 50.0,
+      "y0": 62.0,
+      "x1": 350.0,
+      "y1": 142.0,
+      "rows": 2,
+      "cols": 2,
+      "cells": [
+        [
+          "a,\"b\nc",
+          "plain"
+        ],
+        [
+          "",
+          ""
+        ]
+      ],
+      "page": 1
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+﻿# chars
+page,x0,y0,x1,y1,text,fontname,size,color
+1,60,707.93,65.56,717.93,a,Helvetica,10,0
+1,65.56,707.93,68.34,717.93,",",Helvetica,10,0
+1,68.34,707.93,71.89,717.93,"""",Helvetica,10,0
+1,71.89,707.93,77.45,717.93,b,Helvetica,10,0
+1,60,695.93,65,705.93,c,Helvetica,10,0
+1,210,697.93,215.56,707.93,p,Helvetica,10,0
+1,215.56,697.93,217.78,707.93,l,Helvetica,10,0
+1,217.78,697.93,223.34,707.93,a,Helvetica,10,0
+1,223.34,697.93,225.56,707.93,i,Helvetica,10,0
+1,225.56,697.93,231.12,707.93,n,Helvetica,10,0
+# words
+page,x0,y0,x1,y1,text,fontname,size
+1,60,707.93,77.45,717.93,"a,""b",Helvetica,10
+1,60,695.93,65,705.93,c,Helvetica,10
+1,210,697.93,231.12,707.93,plain,Helvetica,10
+# rects
+page,x0,y0,x1,y1,fill,stroke,color,width
+1,50,650,350,730,true,true,0,1
+# lines
+page,x0,y0,x1,y1,stroke,color,width
+1,200,650,200,730,true,0,1
+1,50,690,350,690,true,0,1
+# curves
+page,x0,y0,x1,y1,points,stroke
+# images
+page,x0,y0,x1,y1,width,height,stream_id,format
+# tables
+page,table_index,row,col,text
+1,0,0,0,"a,""b
+c"
+1,0,0,1,plain
+1,0,1,0,
+1,0,1,1,

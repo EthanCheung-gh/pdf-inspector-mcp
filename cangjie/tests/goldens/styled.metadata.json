@@ -1,0 +1,14 @@
+{
+  "pages": 3,
+  "version": "1.3",
+  "encrypted": false,
+  "page_w": 612.0,
+  "page_h": 792.0,
+  "title": "untitled",
+  "author": "anonymous",
+  "producer": "ReportLab PDF Library - (opensource)",
+  "fonts": [
+    "Courier",
+    "Helvetica"
+  ]
+}

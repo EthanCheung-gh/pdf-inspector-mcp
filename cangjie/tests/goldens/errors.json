@@ -1,0 +1,40 @@
+{
+  "cases": {
+    "garbage": {
+      "tool": "pdf_get_metadata",
+      "fragment": "not a valid PDF"
+    },
+    "encrypted": {
+      "tool": "pdf_get_metadata",
+      "fragment": "password required or incorrect"
+    },
+    "corrupt-stream": {
+      "tool": "pdf_extract_page",
+      "fragment": "Failed to read"
+    },
+    "missing-path": {
+      "tool": "pdf_get_metadata",
+      "fragment": "Invalid PDF path"
+    },
+    "page-out-of-range": {
+      "tool": "pdf_extract_page",
+      "fragment": "Invalid page number"
+    },
+    "page-range": {
+      "tool": "pdf_export",
+      "fragment": "Invalid page range"
+    },
+    "format": {
+      "tool": "pdf_export",
+      "fragment": "Invalid format"
+    },
+    "missing-page": {
+      "tool": "pdf_export",
+      "fragment": "Missing page"
+    },
+    "output-path": {
+      "tool": "pdf_export",
+      "fragment": "Invalid output_path"
+    }
+  }
+}

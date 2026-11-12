@@ -1,0 +1,16 @@
+{
+  "fonts": [
+    {
+      "fontname": "Helvetica",
+      "pages": [
+        1
+      ],
+      "charCount": 10,
+      "sizeMin": 10.0,
+      "sizeMax": 10.0,
+      "colors": [
+        "(0,)"
+      ]
+    }
+  ]
+}

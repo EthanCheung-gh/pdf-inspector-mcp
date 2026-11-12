@@ -1,0 +1,16 @@
+{
+  "fonts": [
+    {
+      "fontname": "Courier",
+      "pages": [
+        1
+      ],
+      "charCount": 10,
+      "sizeMin": 12.0,
+      "sizeMax": 12.0,
+      "colors": [
+        "(0,)"
+      ]
+    }
+  ]
+}

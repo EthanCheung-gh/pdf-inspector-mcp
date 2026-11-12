@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "pages": 1,
+    "version": "1.5",
+    "encrypted": false,
+    "page_w": 300.0,
+    "page_h": 400.0,
+    "title": "",
+    "author": "",
+    "producer": "",
+    "fonts": [
+      "Courier"
+    ]
+  },
+  "pageCount": 1,
+  "pages": [
+    {
+      "width": 300.0,
+      "height": 400.0,
+      "chars": [
+        {
+          "type": "char",
+          "x0": 10.0,
+          "y0": 17.672,
+          "x1": 17.2,
+          "y1": 29.672,
+          "text": "o",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 17.2,
+          "y0": 17.672,
+          "x1": 24.4,
+          "y1": 29.672,
+          "text": "b",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 24.4,
+          "y0": 17.672,
+          "x1": 31.599999999999998,
+          "y1": 29.672,
+          "text": "j",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 31.599999999999998,
+          "y0": 17.672,
+          "x1": 38.8,
+          "y1": 29.672,
+          "text": "s",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 38.8,
+          "y0": 17.672,
+          "x1": 46.0,
+          "y1": 29.672,
+          "text": "t",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 46.0,
+          "y0": 17.672,
+          "x1": 53.2,
+          "y1": 29.672,
+          "text": "m",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 53.2,
+          "y0": 17.672,
+          "x1": 60.400000000000006,
+          "y1": 29.672,
+          "text": "w",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 60.400000000000006,
+          "y0": 17.672,
+          "x1": 67.60000000000001,
+          "y1": 29.672,
+          "text": "o",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 67.60000000000001,
+          "y0": 17.672,
+          "x1": 74.80000000000001,
+          "y1": 29.672,
+          "text": "r",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 74.80000000000001,
+          "y0": 17.672,
+          "x1": 82.00000000000001,
+          "y1": 29.672,
+          "text": "d",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        }
+      ],
+      "words": [
+        {
+          "type": "word",
+          "x0": 10.0,
+          "y0": 17.672000000000025,
+          "x1": 82.00000000000001,
+          "y1": 29.672000000000025,
+          "text": "objstmword",
+          "fontname": "Courier",
+          "size": 12.0,
+          "page": 1
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

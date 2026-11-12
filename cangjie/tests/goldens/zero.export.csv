@@ -1,0 +1,14 @@
+﻿# chars
+page,x0,y0,x1,y1,text,fontname,size,color
+# words
+page,x0,y0,x1,y1,text,fontname,size
+# rects
+page,x0,y0,x1,y1,fill,stroke,color,width
+# lines
+page,x0,y0,x1,y1,stroke,color,width
+# curves
+page,x0,y0,x1,y1,points,stroke
+# images
+page,x0,y0,x1,y1,width,height,stream_id,format
+# tables
+page,table_index,row,col,text

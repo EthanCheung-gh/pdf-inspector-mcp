@@ -1,6 +1,6 @@
 package pdf_inspector_mcp.mcp
 
-import magic.core.tool.{Tool, ToolException, ToolResponse}
+import magic.core.tool.{Tool, ToolException, ToolParameter, ToolResponse}
 
 import std.collection.{ArrayList, HashMap}
 import std.env.{ConsoleReader, ConsoleWriter, getStdIn, getStdOut}
@@ -15,12 +15,24 @@ import stdx.encoding.json.*
  * This implementation owns the JSON-RPC loop instead and only reuses the
  * `@tool` functions and the `magic.core.tool.Tool` interface.
  *
+ * The wire shape is the MCP one, not CangjieMagic's internal one: a tool is
+ * advertised as `{name, description, inputSchema}` (see `buildToolsListResult`),
+ * and `initialize` only echoes a `protocolVersion` it can actually speak.
+ *
  * Wire format: one JSON-RPC 2.0 message per line on stdin, one response per
  * line on stdout (always flushed). Diagnostics go to stderr only.
  */
 
 private let JSONRPC_VERSION = "2.0"
 private let DEFAULT_PROTOCOL_VERSION = "2024-11-05"
+
+/**
+ * Protocol revisions this server implements. Anything else - older drafts and
+ * versions newer than the build - is answered with `DEFAULT_PROTOCOL_VERSION`,
+ * which is what the specification asks a server to do when it cannot speak the
+ * client's revision (the client then decides whether to continue or disconnect).
+ */
+private let SUPPORTED_PROTOCOL_VERSIONS: Array<String> = ["2024-11-05", "2025-06-18"]
 private let SERVER_NAME = "pdf-inspector"
 private let SERVER_VERSION = "0.1.0-cangjie"
 
@@ -32,10 +44,9 @@ private let INVALID_PARAMS = -32602
 private let INTERNAL_ERROR = -32603
 
 /**
- * The registered tools. `tool.toJsonValue()` is used for `tools/list` on
- * purpose: it honours `ToolParameter.required`, which the `@tool` macro derives
- * from `Option<T>` parameters, so optional arguments are not advertised as
- * required.
+ * The registered tools. `tools/list` is built from `Tool.parameters`, which the
+ * `@tool` macro derives from the function signature: `ToolParameter.required`
+ * comes from `Option<T>`, so optional arguments are not advertised as required.
  */
 private let SERVER_TOOLS: Array<Tool> = [
     pdf_get_metadata,
@@ -104,14 +115,7 @@ private func buildError(id: Option<JsonValue>, code: Int64, message: String): Js
 }
 
 private func buildInitializeResult(params: Option<JsonObject>): JsonValue {
-    var protocolVersion = DEFAULT_PROTOCOL_VERSION
-    if (let Some(paramsObject) <- params) {
-        if (let Some(version) <- readString(paramsObject, "protocolVersion")) {
-            if (!version.isEmpty()) {
-                protocolVersion = version
-            }
-        }
-    }
+    let protocolVersion = negotiateProtocolVersion(params)
 
     let toolsCapability = JsonObject()
     toolsCapability.put("listChanged", JsonBool(false))
@@ -129,14 +133,148 @@ private func buildInitializeResult(params: Option<JsonObject>): JsonValue {
     return result
 }
 
+/**
+ * Echo the client's revision when it is one this server implements, otherwise
+ * answer with `DEFAULT_PROTOCOL_VERSION`.
+ *
+ * Echoing *any* string would be a silent lie: a client that asked for a future
+ * revision would believe the server speaks it, while the messages on the wire
+ * are still 2024-11-05 shaped.
+ */
+private func negotiateProtocolVersion(params: Option<JsonObject>): String {
+    if (let Some(paramsObject) <- params) {
+        if (let Some(requested) <- readString(paramsObject, "protocolVersion")) {
+            for (candidate in SUPPORTED_PROTOCOL_VERSIONS) {
+                if (candidate == requested) {
+                    return candidate
+                }
+            }
+        }
+    }
+    return DEFAULT_PROTOCOL_VERSION
+}
+
+/**
+ * The `tools/list` payload in the shape MCP clients parse:
+ * `{name, description, inputSchema}`.
+ *
+ * `Tool.toJsonValue()` is CangjieMagic's *internal* shape - it nests the JSON
+ * schema of the arguments under `parameters` and may add `examples`/`retType` -
+ * which the MCP specification does not define, so a client built on the official
+ * SDK rejects the response (`tools.0.inputSchema Field required`). The schema
+ * itself is worth keeping: it is where `required` and the per-argument
+ * descriptions live, so it is moved to `inputSchema` (with the optional
+ * arguments made nullable, see `nullableInputSchema`) instead of being rebuilt.
+ */
 private func buildToolsListResult(tools: Array<Tool>): JsonValue {
     let items = ArrayList<JsonValue>()
     for (tool in tools) {
-        items.add(tool.toJsonValue())
+        let internal = tool.toJsonValue().asObject()
+        let rawSchema = match (internal.get("parameters")) {
+            case Some(value) => value
+            case None => emptyObjectSchema()
+        }
+        let item = JsonObject()
+        item.put("name", JsonString(tool.name))
+        if (!tool.description.isEmpty()) {
+            item.put("description", JsonString(tool.description))
+        }
+        item.put("inputSchema", nullableInputSchema(tool, rawSchema))
+        items.add(item)
     }
     let result = JsonObject()
     result.put("tools", JsonArray(items.toArray()))
     return result
+}
+
+/**
+ * Arguments whose Python counterpart really is `Optional[...] = None`, i.e. where
+ * "omitted" and "null" mean the same thing. Only these get `default: null`;
+ * `format` and `scope` are optional in the Cangjie signature only because the
+ * `@tool` macro maps every defaulted argument to `Option<T>`, and their meaning
+ * when omitted is `json`/`document`, not null.
+ */
+private let OPTIONAL_WITH_NULL_DEFAULT: Array<String> = [
+    "password", "page", "first_page", "last_page", "start_page", "end_page", "output_path"
+]
+
+/**
+ * `inputSchema` with every `Option<T>` argument marked nullable.
+ *
+ * `ToolParameter.required` is false exactly for the `Option<T>` parameters, and
+ * the macro describes them with the bare non-null type (`{"type": "string"}`).
+ * The server accepts `null` for them (`Option<T>.fromJsonValue(JsonNull)` is
+ * `None`), so advertising a non-nullable type is a wire-level lie that a strict
+ * JSON-Schema client turns into a client-side validation error before the call
+ * is ever sent. Each optional property is therefore wrapped the way pydantic
+ * describes `Optional[T] = None`: `{"anyOf": [<original schema>,
+ * {"type": "null"}]}`, which keeps `type`, `items` and `description` inside the
+ * first alternative.
+ *
+ * The property order follows the declaration order (which is also `required`'s
+ * order) and the rest of the schema object - `type`, `required` - is copied
+ * through untouched, so this only ever changes the optional entries.
+ */
+private func nullableInputSchema(tool: Tool, schema: JsonValue): JsonValue {
+    let schemaObject = schema.asObject()
+    let properties = match (schemaObject.get("properties")) {
+        case Some(value) => value.asObject()
+        case None => return schema
+    }
+    let updated = JsonObject()
+    for (parameter in tool.parameters) {
+        let original = match (properties.get(parameter.name)) {
+            case Some(value) => value
+            case None => continue
+        }
+        if (parameter.required) {
+            updated.put(parameter.name, original)
+        } else {
+            updated.put(parameter.name, nullableParameterSchema(parameter.name, original))
+        }
+    }
+    let rebuilt = JsonObject()
+    for ((name, value) in schemaObject.getFields()) {
+        if (name != "properties") {
+            rebuilt.put(name, value)
+        }
+    }
+    rebuilt.put("properties", updated)
+    return rebuilt
+}
+
+/** `{"anyOf": [schema, {"type": "null"}]}`, plus `default: null` where that is the truth. */
+private func nullableParameterSchema(name: String, schema: JsonValue): JsonValue {
+    let alternatives = ArrayList<JsonValue>()
+    alternatives.add(schema)
+    let nullAlternative = JsonObject()
+    nullAlternative.put("type", JsonString("null"))
+    alternatives.add(nullAlternative)
+
+    let wrapped = JsonObject()
+    wrapped.put("anyOf", JsonArray(alternatives.toArray()))
+    if (isNullDefaultParameter(name)) {
+        wrapped.put("default", JsonNull())
+    }
+    return wrapped
+}
+
+private func isNullDefaultParameter(name: String): Bool {
+    for (candidate in OPTIONAL_WITH_NULL_DEFAULT) {
+        if (candidate == name) {
+            return true
+        }
+    }
+    return false
+}
+
+/** `{"type": "object", "properties": {}, "required": []}` - the schema for no arguments. */
+private func emptyObjectSchema(): JsonValue {
+    let schema = JsonObject()
+    schema.put("type", JsonString("object"))
+    schema.put("properties", JsonObject())
+    schema.put("required", JsonArray(Array<JsonValue>()))
+    return schema
 }
 
 private func findTool(tools: Array<Tool>, name: String): Option<Tool> {

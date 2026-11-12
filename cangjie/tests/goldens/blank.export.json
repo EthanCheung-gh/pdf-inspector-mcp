@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "pages": 1,
+    "version": "1.4",
+    "encrypted": false,
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "title": "",
+    "author": "",
+    "producer": "",
+    "fonts": []
+  },
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "pageCount": 1,
+  "objectTypes": [
+    "char",
+    "word",
+    "rect",
+    "line",
+    "curve",
+    "image",
+    "table"
+  ],
+  "pages": [
+    {
+      "width": 612.0,
+      "height": 792.0,
+      "chars": [],
+      "words": [],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

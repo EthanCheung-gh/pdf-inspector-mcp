@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "pages": 1,
+    "version": "1.4",
+    "encrypted": false,
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "title": "",
+    "author": "",
+    "producer": "",
+    "fonts": [
+      "Helvetica"
+    ]
+  },
+  "pageCount": 1,
+  "pages": [
+    {
+      "width": 612.0,
+      "height": 792.0,
+      "chars": [
+        {
+          "type": "char",
+          "x0": 72.0,
+          "y0": 517.516,
+          "x1": 81.996,
+          "y1": 529.516,
+          "text": "m",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 81.996,
+          "y0": 517.516,
+          "x1": 88.66799999999999,
+          "y1": 529.516,
+          "text": "e",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 88.668,
+          "y0": 517.516,
+          "x1": 95.34,
+          "y1": 529.516,
+          "text": "d",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 95.34,
+          "y0": 517.516,
+          "x1": 98.004,
+          "y1": 529.516,
+          "text": "i",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 98.004,
+          "y0": 517.516,
+          "x1": 104.676,
+          "y1": 529.516,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 104.676,
+          "y0": 517.516,
+          "x1": 111.348,
+          "y1": 529.516,
+          "text": "b",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 111.348,
+          "y0": 517.516,
+          "x1": 118.02,
+          "y1": 529.516,
+          "text": "o",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 118.02,
+          "y0": 517.516,
+          "x1": 124.02,
+          "y1": 529.516,
+          "text": "x",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 124.02,
+          "y0": 517.516,
+          "x1": 132.684,
+          "y1": 529.516,
+          "text": "w",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 132.684,
+          "y0": 517.516,
+          "x1": 139.356,
+          "y1": 529.516,
+          "text": "o",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 139.356,
+          "y0": 517.516,
+          "x1": 143.352,
+          "y1": 529.516,
+          "text": "r",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 143.35199999999998,
+          "y0": 517.516,
+          "x1": 150.02399999999997,
+          "y1": 529.516,
+          "text": "d",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "color": [
+            0
+          ],
+          "page": 1
+        }
+      ],
+      "words": [
+        {
+          "type": "word",
+          "x0": 72.0,
+          "y0": 517.516,
+          "x1": 150.02399999999997,
+          "y1": 529.516,
+          "text": "mediaboxword",
+          "fontname": "Helvetica",
+          "size": 12.0,
+          "page": 1
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

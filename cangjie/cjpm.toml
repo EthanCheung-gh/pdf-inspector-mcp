@@ -18,3 +18,9 @@
 
 [target.aarch64-apple-darwin.bin-dependencies]
   path-option = ["./libs/cangjie-stdx-mac-aarch64-1.0.0.1/darwin_aarch64_llvm/dynamic/stdx"]
+
+[package.package-configuration."pdf_inspector_mcp.debug"]
+  output-type = "executable"
+
+[package.package-configuration."pdf_inspector_mcp.extractdebug"]
+  output-type = "executable"

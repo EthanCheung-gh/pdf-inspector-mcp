@@ -1,0 +1,242 @@
+{
+  "width": 612.0,
+  "height": 792.0,
+  "chars": [
+    {
+      "type": "char",
+      "x0": 72.0,
+      "y0": 697.723,
+      "x1": 78.116,
+      "y1": 708.723,
+      "text": "p",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 78.116,
+      "y0": 697.723,
+      "x1": 84.232,
+      "y1": 708.723,
+      "text": "a",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 84.232,
+      "y0": 697.723,
+      "x1": 90.348,
+      "y1": 708.723,
+      "text": "g",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 90.348,
+      "y0": 697.723,
+      "x1": 96.464,
+      "y1": 708.723,
+      "text": "e",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 96.464,
+      "y0": 697.723,
+      "x1": 99.522,
+      "y1": 708.723,
+      "text": " ",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 99.522,
+      "y0": 697.723,
+      "x1": 105.638,
+      "y1": 708.723,
+      "text": "1",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 105.638,
+      "y0": 697.723,
+      "x1": 108.69600000000001,
+      "y1": 708.723,
+      "text": " ",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 108.696,
+      "y0": 697.723,
+      "x1": 114.196,
+      "y1": 708.723,
+      "text": "c",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 114.196,
+      "y0": 697.723,
+      "x1": 120.312,
+      "y1": 708.723,
+      "text": "o",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 120.31200000000001,
+      "y0": 697.723,
+      "x1": 126.42800000000001,
+      "y1": 708.723,
+      "text": "n",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 126.428,
+      "y0": 697.723,
+      "x1": 129.486,
+      "y1": 708.723,
+      "text": "t",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 129.486,
+      "y0": 697.723,
+      "x1": 135.602,
+      "y1": 708.723,
+      "text": "e",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 135.602,
+      "y0": 697.723,
+      "x1": 141.71800000000002,
+      "y1": 708.723,
+      "text": "n",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 141.71800000000002,
+      "y0": 697.723,
+      "x1": 144.776,
+      "y1": 708.723,
+      "text": "t",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    }
+  ],
+  "words": [
+    {
+      "type": "word",
+      "x0": 72.0,
+      "y0": 697.723,
+      "x1": 96.464,
+      "y1": 708.723,
+      "text": "page",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "page": 1
+    },
+    {
+      "type": "word",
+      "x0": 99.522,
+      "y0": 697.723,
+      "x1": 105.638,
+      "y1": 708.723,
+      "text": "1",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "page": 1
+    },
+    {
+      "type": "word",
+      "x0": 108.696,
+      "y0": 697.723,
+      "x1": 144.776,
+      "y1": 708.723,
+      "text": "content",
+      "fontname": "Helvetica",
+      "size": 11.0,
+      "page": 1
+    }
+  ],
+  "rects": [],
+  "lines": [],
+  "curves": [],
+  "images": [],
+  "tables": []
+}

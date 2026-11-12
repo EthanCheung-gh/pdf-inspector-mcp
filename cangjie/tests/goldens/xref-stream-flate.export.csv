@@ -1,0 +1,25 @@
+﻿# chars
+page,x0,y0,x1,y1,text,fontname,size,color
+1,10,17.672,17.2,29.672,o,Courier,12,0
+1,17.2,17.672,24.4,29.672,b,Courier,12,0
+1,24.4,17.672,31.599999999999998,29.672,j,Courier,12,0
+1,31.599999999999998,17.672,38.8,29.672,s,Courier,12,0
+1,38.8,17.672,46,29.672,t,Courier,12,0
+1,46,17.672,53.2,29.672,m,Courier,12,0
+1,53.2,17.672,60.400000000000006,29.672,w,Courier,12,0
+1,60.400000000000006,17.672,67.60000000000001,29.672,o,Courier,12,0
+1,67.60000000000001,17.672,74.80000000000001,29.672,r,Courier,12,0
+1,74.80000000000001,17.672,82.00000000000001,29.672,d,Courier,12,0
+# words
+page,x0,y0,x1,y1,text,fontname,size
+1,10,17.672000000000025,82.00000000000001,29.672000000000025,objstmword,Courier,12
+# rects
+page,x0,y0,x1,y1,fill,stroke,color,width
+# lines
+page,x0,y0,x1,y1,stroke,color,width
+# curves
+page,x0,y0,x1,y1,points,stroke
+# images
+page,x0,y0,x1,y1,width,height,stream_id,format
+# tables
+page,table_index,row,col,text

@@ -1,0 +1,24 @@
+{
+  "width": 200.0,
+  "height": 200.0,
+  "chars": [],
+  "words": [],
+  "rects": [],
+  "lines": [],
+  "curves": [],
+  "images": [
+    {
+      "type": "image",
+      "x0": 50.0,
+      "y0": 50.0,
+      "x1": 150.0,
+      "y1": 150.0,
+      "width": 100.0,
+      "height": 100.0,
+      "stream_id": "p1_img_0",
+      "format": "unknown",
+      "page": 1
+    }
+  ],
+  "tables": []
+}

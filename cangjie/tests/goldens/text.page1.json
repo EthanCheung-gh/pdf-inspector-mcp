@@ -1,0 +1,150 @@
+{
+  "width": 612.0,
+  "height": 792.0,
+  "chars": [
+    {
+      "type": "char",
+      "x0": 72.0,
+      "y0": 697.516,
+      "x1": 78.672,
+      "y1": 709.516,
+      "text": "a",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 78.672,
+      "y0": 697.516,
+      "x1": 81.336,
+      "y1": 709.516,
+      "text": "l",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 81.336,
+      "y0": 697.516,
+      "x1": 88.008,
+      "y1": 709.516,
+      "text": "p",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 88.00800000000001,
+      "y0": 697.516,
+      "x1": 94.68,
+      "y1": 709.516,
+      "text": "h",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 94.68,
+      "y0": 697.516,
+      "x1": 101.352,
+      "y1": 709.516,
+      "text": "a",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 101.352,
+      "y0": 697.516,
+      "x1": 110.016,
+      "y1": 709.516,
+      "text": "w",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 110.016,
+      "y0": 697.516,
+      "x1": 116.688,
+      "y1": 709.516,
+      "text": "o",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 116.688,
+      "y0": 697.516,
+      "x1": 120.684,
+      "y1": 709.516,
+      "text": "r",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    },
+    {
+      "type": "char",
+      "x0": 120.684,
+      "y0": 697.516,
+      "x1": 127.356,
+      "y1": 709.516,
+      "text": "d",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "color": [
+        0
+      ],
+      "page": 1
+    }
+  ],
+  "words": [
+    {
+      "type": "word",
+      "x0": 72.0,
+      "y0": 697.516,
+      "x1": 127.356,
+      "y1": 709.516,
+      "text": "alphaword",
+      "fontname": "Helvetica",
+      "size": 12.0,
+      "page": 1
+    }
+  ],
+  "rects": [],
+  "lines": [],
+  "curves": [],
+  "images": [],
+  "tables": []
+}

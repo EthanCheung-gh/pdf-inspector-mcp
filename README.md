@@ -4,6 +4,14 @@
 
 服务本身没有界面：客户端传入 PDF 路径，就能拿到与上游 Inspector 一致的对象级数据——字符、单词、矩形、线段、曲线、图片、表格——以及字体统计和 JSON/CSV 导出。
 
+## 仓颉版（CangjieMagic）
+
+本仓库另含 `cangjie/` 子项目：用仓颉编程语言 + CangjieMagic 重写的同款 MCP 服务（同样 6 个工具、stdio）。
+
+- 分支：`feat/cangjie-magic-rewrite`
+- 构建/运行/差异说明：[cangjie/README.md](cangjie/README.md)
+- Python 版仍是默认实现与行为基线；仓颉版的已知差异见上述文档。
+
 ## 与上游的关系
 
 本项目的解析与导出逻辑是 [pdf-inspector](https://github.com/EthanCheung-gh/pdf-inspector) **v0.2.0 的内联移植**，不是重新实现：

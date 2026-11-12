@@ -1,0 +1,4 @@
+# PDF fixtures are byte-exact inputs for the golden tests: mark them binary so
+# git never normalises line endings, never tries a text merge, and never reports
+# the trailing spaces that PDF syntax legitimately contains as whitespace errors.
+tests/fixtures/*.pdf binary

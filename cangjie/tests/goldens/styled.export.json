@@ -1,0 +1,416 @@
+{
+  "metadata": {
+    "pages": 3,
+    "version": "1.3",
+    "encrypted": false,
+    "page_w": 612.0,
+    "page_h": 792.0,
+    "title": "untitled",
+    "author": "anonymous",
+    "producer": "ReportLab PDF Library - (opensource)",
+    "fonts": [
+      "Courier",
+      "Helvetica"
+    ]
+  },
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "pageCount": 3,
+  "objectTypes": [
+    "char",
+    "word",
+    "rect",
+    "line",
+    "curve",
+    "image",
+    "table"
+  ],
+  "pages": [
+    {
+      "width": 612.0,
+      "height": 792.0,
+      "chars": [
+        {
+          "type": "char",
+          "x0": 50.0,
+          "y0": 697.93,
+          "x1": 55.56,
+          "y1": 707.93,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 55.56,
+          "y0": 697.93,
+          "x1": 57.78,
+          "y1": 707.93,
+          "text": "l",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 57.78,
+          "y0": 697.93,
+          "x1": 63.34,
+          "y1": 707.93,
+          "text": "p",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 63.34,
+          "y0": 697.93,
+          "x1": 68.9,
+          "y1": 707.93,
+          "text": "h",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 68.9,
+          "y0": 697.93,
+          "x1": 74.46000000000001,
+          "y1": 707.93,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 50.0,
+          "y0": 647.102,
+          "x1": 57.784,
+          "y1": 661.102,
+          "text": "b",
+          "fontname": "Helvetica",
+          "size": 14.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 57.784,
+          "y0": 647.102,
+          "x1": 65.568,
+          "y1": 661.102,
+          "text": "e",
+          "fontname": "Helvetica",
+          "size": 14.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 65.568,
+          "y0": 647.102,
+          "x1": 69.46,
+          "y1": 661.102,
+          "text": "t",
+          "fontname": "Helvetica",
+          "size": 14.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 1
+        },
+        {
+          "type": "char",
+          "x0": 69.46000000000001,
+          "y0": 647.102,
+          "x1": 77.24400000000001,
+          "y1": 661.102,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 14.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 1
+        }
+      ],
+      "words": [
+        {
+          "type": "word",
+          "x0": 50.0,
+          "y0": 697.93,
+          "x1": 74.46000000000001,
+          "y1": 707.93,
+          "text": "alpha",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "page": 1
+        },
+        {
+          "type": "word",
+          "x0": 50.0,
+          "y0": 647.102,
+          "x1": 77.24400000000001,
+          "y1": 661.102,
+          "text": "beta",
+          "fontname": "Helvetica",
+          "size": 14.0,
+          "page": 1
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "width": 612.0,
+      "height": 792.0,
+      "chars": [
+        {
+          "type": "char",
+          "x0": 50.0,
+          "y0": 697.93,
+          "x1": 55.56,
+          "y1": 707.93,
+          "text": "g",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 2
+        },
+        {
+          "type": "char",
+          "x0": 55.56,
+          "y0": 697.93,
+          "x1": 61.120000000000005,
+          "y1": 707.93,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 2
+        },
+        {
+          "type": "char",
+          "x0": 61.120000000000005,
+          "y0": 697.93,
+          "x1": 69.45,
+          "y1": 707.93,
+          "text": "m",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 2
+        },
+        {
+          "type": "char",
+          "x0": 69.45,
+          "y0": 697.93,
+          "x1": 77.78,
+          "y1": 707.93,
+          "text": "m",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 2
+        },
+        {
+          "type": "char",
+          "x0": 77.78,
+          "y0": 697.93,
+          "x1": 83.34,
+          "y1": 707.93,
+          "text": "a",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "page": 2
+        }
+      ],
+      "words": [
+        {
+          "type": "word",
+          "x0": 50.0,
+          "y0": 697.93,
+          "x1": 83.34,
+          "y1": 707.93,
+          "text": "gamma",
+          "fontname": "Helvetica",
+          "size": 10.0,
+          "page": 2
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "width": 612.0,
+      "height": 792.0,
+      "chars": [
+        {
+          "type": "char",
+          "x0": 50.0,
+          "y0": 697.672,
+          "x1": 57.2,
+          "y1": 709.672,
+          "text": "d",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "page": 3
+        },
+        {
+          "type": "char",
+          "x0": 57.2,
+          "y0": 697.672,
+          "x1": 64.4,
+          "y1": 709.672,
+          "text": "e",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "page": 3
+        },
+        {
+          "type": "char",
+          "x0": 64.4,
+          "y0": 697.672,
+          "x1": 71.60000000000001,
+          "y1": 709.672,
+          "text": "l",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "page": 3
+        },
+        {
+          "type": "char",
+          "x0": 71.6,
+          "y0": 697.672,
+          "x1": 78.8,
+          "y1": 709.672,
+          "text": "t",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "page": 3
+        },
+        {
+          "type": "char",
+          "x0": 78.8,
+          "y0": 697.672,
+          "x1": 86.0,
+          "y1": 709.672,
+          "text": "a",
+          "fontname": "Courier",
+          "size": 12.0,
+          "color": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "page": 3
+        }
+      ],
+      "words": [
+        {
+          "type": "word",
+          "x0": 50.0,
+          "y0": 697.672,
+          "x1": 86.0,
+          "y1": 709.672,
+          "text": "delta",
+          "fontname": "Courier",
+          "size": 12.0,
+          "page": 3
+        }
+      ],
+      "rects": [],
+      "lines": [],
+      "curves": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

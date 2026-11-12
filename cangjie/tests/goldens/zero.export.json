@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "pages": 0,
+    "version": "1.4",
+    "encrypted": false,
+    "page_w": 0,
+    "page_h": 0,
+    "title": "",
+    "author": "",
+    "producer": "",
+    "fonts": []
+  },
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "pageCount": 0,
+  "objectTypes": [
+    "char",
+    "word",
+    "rect",
+    "line",
+    "curve",
+    "image",
+    "table"
+  ],
+  "pages": []
+}
