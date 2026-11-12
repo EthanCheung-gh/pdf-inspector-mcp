@@ -1,0 +1,20 @@
+[package]
+  cjc-version = "1.0.0"
+  name = "pdf_inspector_mcp"
+  version = "0.1.0"
+  description = "PDF Inspector MCP server (Cangjie + CangjieMagic rewrite)"
+  output-type = "executable"
+  src-dir = "src"
+
+[dependencies]
+  magic = { git = "https://gitcode.com/Cangjie-TPC/CangjieMagic.git", branch = "dev" }
+
+# CangjieMagic depends on cangjie-stdx. Fetch it with scripts/setup-stdx.sh.
+[target.x86_64-unknown-linux-gnu.bin-dependencies]
+  path-option = ["./libs/cangjie-stdx-linux-x64-1.0.0.1/linux_x86_64_llvm/dynamic/stdx"]
+
+[target.aarch64-unknown-linux-gnu.bin-dependencies]
+  path-option = ["./libs/cangjie-stdx-linux-aarch64-1.0.0.1/linux_aarch64_llvm/dynamic/stdx"]
+
+[target.aarch64-apple-darwin.bin-dependencies]
+  path-option = ["./libs/cangjie-stdx-mac-aarch64-1.0.0.1/darwin_aarch64_llvm/dynamic/stdx"]

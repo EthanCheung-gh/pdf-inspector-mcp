@@ -1,0 +1,4 @@
+version = 0
+
+[requires]
+  magic = {git = "https://gitcode.com/Cangjie-TPC/CangjieMagic.git", commitId = "bc4624fac86ad8498b61d7e5f3b1168659bc72b5", branch = "dev"}
