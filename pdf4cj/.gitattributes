@@ -1,7 +1,0 @@
-# PDF fixtures are binary artifacts whose cross-reference tables store absolute
-# byte offsets: any CRLF/LF conversion (core.autocrlf, text=auto) corrupts them.
-tests/fixtures/*.pdf binary
-*.png binary
-
-# Keep the shell entry points executable regardless of the checkout platform.
-scripts/*.sh text eol=lf

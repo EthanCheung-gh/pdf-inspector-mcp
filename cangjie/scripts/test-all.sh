@@ -2,7 +2,8 @@
 # Run every check the Cangjie port has, in the order a reviewer expects:
 #
 #   1. pdf4cj cjpm test  - the PDF library this server imports via a path
-#                          dependency, tested from ../pdf4cj first;
+#                          dependency, tested from ../../pdf4cj (a standalone
+#                          sibling project, outside this repository) first;
 #   2. cjpm build        - compile the server (and its debug helpers);
 #   3. cjpm test         - unit tests + the golden integration tests against the
 #                          committed Python baseline in tests/goldens/;
@@ -22,7 +23,7 @@ REPO_ROOT="$(cd "${PROJECT_DIR}/.." && pwd)"
 CJV="${CJV:-${HOME}/.cjv/bin/cjv}"
 TOOLCHAIN="${CJ_TOOLCHAIN:-lts-1.0.0}"
 STDX_DIR="${PROJECT_DIR}/libs/cangjie-stdx-linux-x64-1.0.0.1/linux_x86_64_llvm/dynamic/stdx"
-LIB_DIR="${REPO_ROOT}/pdf4cj"
+LIB_DIR="$(cd "${REPO_ROOT}/.." && pwd)/pdf4cj"
 LIB_STDX_DIR="${LIB_DIR}/stdx/cangjie-stdx-linux-x64-1.0.0.1"
 
 # pdf4cj/cjpm.toml resolves stdx through ${CANGJIE_STDX_PATH}; export it here so
@@ -80,7 +81,8 @@ run_stdx_setup() {
 
 # The path dependency is verified on its own first: its package (`pdf4cj`) is
 # what the MCP code imports, and a failure there should not be reported as an
-# MCP test failure. The subshell keeps `test-all.sh`'s cwd.
+# MCP test failure. pdf4cj lives outside this repository at ../../pdf4cj; the
+# subshell keeps `test-all.sh`'s cwd.
 run_library_tests() {
     (
         cd "${LIB_DIR}"

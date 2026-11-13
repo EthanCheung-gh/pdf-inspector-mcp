@@ -3,8 +3,10 @@
 
 The script writes two generated sources:
 
-  pdf4cj/src/metrics_data.cj   -- Base14Metrics + base14Metrics()/normalizeBase14Name()
-  pdf4cj/src/encoding_data.cj  -- built-in encodings + glyphNameToUnicode()
+  ../pdf4cj/src/metrics_data.cj   -- Base14Metrics + base14Metrics()/normalizeBase14Name()
+  ../pdf4cj/src/encoding_data.cj  -- built-in encodings + glyphNameToUnicode()
+
+pdf4cj is a standalone sibling project of this repository (../pdf4cj).
 
 Data sources (read from the project's Python venv; no network access):
 
@@ -44,7 +46,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 VENV_PYTHON = REPO_ROOT / ".venv" / "bin" / "python"
-OUT_DIR = REPO_ROOT / "pdf4cj" / "src"
+OUT_DIR = REPO_ROOT.parent / "pdf4cj" / "src"
 METRICS_PATH = OUT_DIR / "metrics_data.cj"
 ENCODING_PATH = OUT_DIR / "encoding_data.cj"
 
@@ -853,9 +855,11 @@ def main() -> None:
     ))
     ascent, descent = ascent_descent("Helvetica")
 
-    print(f"wrote {METRICS_PATH.relative_to(REPO_ROOT)} "
+    # The generated files live outside this repository (../pdf4cj/src), so make
+    # the printed paths relative to the repo root explicitly.
+    print(f"wrote {os.path.relpath(METRICS_PATH, REPO_ROOT)} "
           f"({len(metrics.splitlines())} lines, {len(metrics.encode()):,} bytes)")
-    print(f"wrote {ENCODING_PATH.relative_to(REPO_ROOT)} "
+    print(f"wrote {os.path.relpath(ENCODING_PATH, REPO_ROOT)} "
           f"({len(encoding.splitlines())} lines, {len(encoding.encode()):,} bytes)")
     print(f"fonts: {len(BASE14)}")
     defined = {

@@ -12,7 +12,7 @@
 
 | 维度 | Python 版 | 仓颉版 |
 |------|-----------|--------|
-| 解析内核 | pdfplumber / pdfminer / Pillow | 独立库 [`../pdf4cj`](../pdf4cj)（package `pdf4cj`，纯仓颉实现） |
+| 解析内核 | pdfplumber / pdfminer / Pillow | 独立库 [`../../pdf4cj`](../../pdf4cj)（同级独立项目，package `pdf4cj`，纯仓颉实现） |
 | 导出 | `export.py` | `src/export/`（JSON / CSV / 文件名） |
 | 工具层 | `server.py` + MCP SDK | `src/mcp/`，CangjieMagic `@tool` + 自写 stdio JSON-RPC 循环 |
 | 传输 | stdio | stdio（仍是一行一条 JSON-RPC 消息） |
@@ -71,17 +71,17 @@ CangjieMagic 的 `dev` 分支当前**无法在 1.2.0 工具链下编译**（语�
 
 ### 准备 stdx
 
-CangjieMagic 依赖 cangjie-stdx 的预编译二进制；`scripts/setup-stdx.sh` 会下载并解压 **`cangjie-stdx-linux-x64-1.0.0.1`** 到 `cangjie/libs/`，同时调用 `../pdf4cj/scripts/setup-stdx.sh` 准备好解析库自己的那份（`pdf4cj/stdx/`）：
+CangjieMagic 依赖 cangjie-stdx 的预编译二进制；`scripts/setup-stdx.sh` 会下载并解压 **`cangjie-stdx-linux-x64-1.0.0.1`** 到 `cangjie/libs/`，同时调用 `../../pdf4cj/scripts/setup-stdx.sh` 准备好解析库自己的那份（`../../pdf4cj/stdx/`）：
 
 ```bash
 cd cangjie
 bash scripts/setup-stdx.sh
 ```
 
-构建前还必须导出 `pdf4cj` 使用的 stdx 路径——`pdf4cj/cjpm.toml` 用 `${CANGJIE_STDX_PATH}` 指向它，path 依赖一旦参与编译就会读取这个变量：
+构建前还必须导出 `pdf4cj` 使用的 stdx 路径——同级项目里的 `../../pdf4cj/cjpm.toml` 用 `${CANGJIE_STDX_PATH}` 指向它，path 依赖一旦参与编译就会读取这个变量：
 
 ```bash
-export CANGJIE_STDX_PATH="$(cd ../pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1 && pwd)"
+export CANGJIE_STDX_PATH="$(cd ../../pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1 && pwd)"
 ```
 
 （`scripts/` 下的脚本都会自己设好这个变量，只有手工执行 `cjpm` 时才需要手动 export。）
@@ -108,7 +108,7 @@ cd cangjie
 依赖版本：
 
 - CangjieMagic 以 git 依赖形式引入，`cjpm.lock` 固定到 commit `bc4624fac86ad8498b61d7e5f3b1168659bc72b5`（`dev` 分支）。升级 magic 时要同步验证工具链兼容性。
-- `pdf4cj` 以 **path 依赖**（`{ path = "../pdf4cj" }`）引入，库本身是 `output-type = "dynamic"`，所以构建产物 `libpdf4cj.so` 会落在 `cangjie/target/release/pdf4cj/`，运行时需要它在 `LD_LIBRARY_PATH` 里（见下文）。path 依赖不写进 `cjpm.lock`，改库代码后直接重新 `cjpm build` 即可。
+- `pdf4cj` 以 **path 依赖**（`{ path = "../../pdf4cj" }`）引入——它是本仓库**同级**的独立项目，不在本仓库内。库本身是 `output-type = "dynamic"`，所以构建产物 `libpdf4cj.so` 会落在 `cangjie/target/release/pdf4cj/`，运行时需要它在 `LD_LIBRARY_PATH` 里（见下文）。path 依赖不写进 `cjpm.lock`，改库代码后直接重新 `cjpm build` 即可。
 - cangjie-stdx 固定 `1.0.0.1`。
 - `libs/`、`target/`、`build-script-cache/` 都在 `cangjie/.gitignore` 里，不入库。
 
@@ -197,11 +197,12 @@ cangjie/
     generate_fixtures.py
     generate_goldens.py
 
-../pdf4cj/              独立库（package pdf4cj，被 cangjie/ 以 path 依赖引用）
+（本仓库之外，同级目录）
+../../pdf4cj/           独立库项目（package pdf4cj，被 cangjie/ 以 path 依赖引用）
   cjpm.toml             output-type = dynamic；stdx 走 ${CANGJIE_STDX_PATH}
   stdx/                 pdf4cj 自己的 cangjie-stdx（由 scripts/setup-stdx.sh 下载）
   src/                  PDF 解析与提取内核（见下节）
-    test/               库自身单元测试（package pdf4cj.test，61 个用例）
+    test/               库自身单元测试（package pdf4cj.test，77 个用例）
 ```
 
 ### `src/mcp/`
@@ -221,9 +222,9 @@ cangjie/
 - 超出上限按 LRU 淘汰，淘汰前 `close()`；
 - 服务器是单线程逐条处理消息，因此**没有锁**（Python 版每会话有锁是因为它可能被多线程调用）。
 
-### PDF 解析库（`../pdf4cj`）
+### PDF 解析库（`../../pdf4cj`）
 
-解析内核已抽成独立库 `pdf4cj`（package `pdf4cj`，`output-type = "dynamic"`），本节描述的文件都在 `../pdf4cj/src/` 下；`cangjie/` 里通过 `import pdf4cj.*` 使用它。库有独立的 `cjpm.toml`、`stdx/`、测试与文档，改动内核时请在该库内构建/测试（见其 README）。
+解析内核已抽成独立库 `pdf4cj`（package `pdf4cj`，`output-type = "dynamic"`），并且是**本仓库之外的独立项目**（与本仓库同级的 `../../pdf4cj`，有它自己的 Git 仓库）。本节描述的文件都在 `../../pdf4cj/src/` 下；`cangjie/` 里通过 `import pdf4cj.*` 使用它。库有独立的 `cjpm.toml`、`stdx/`、测试与文档，改动内核时请在该库内构建/测试（见其 README）。
 
 | 文件 | 职责 |
 |------|------|
@@ -469,26 +470,26 @@ CSV 结构：UTF-8 BOM 开头，按 `# chars`、`# words`、`# rects`、`# lines
 解析内核与 MCP 层现在是两个工程，测试分开统计：
 
 ```bash
-# 1) 解析库
-cd pdf4cj
+# 1) 解析库（同级独立项目，在本仓库之外）
+cd ../../pdf4cj
 ~/.cjv/bin/cjv run lts-1.0.0 cjpm test
 
 # 2) MCP 工程（会连带构建 path 依赖 pdf4cj）
-cd ../cangjie
+cd ../pdf-inspector-mcp/cangjie
 ~/.cjv/bin/cjv run lts-1.0.0 cjpm test
 ```
 
-当前检出：库 **61 个用例，PASSED 61，SKIPPED 0，FAILED 0**；MCP **89 个用例，PASSED 89，SKIPPED 0，FAILED 0**（61 个单测 + 28 个 golden 集成用例）。两者合计 150。
+当前检出：库 **77 个用例，PASSED 77，SKIPPED 0，FAILED 0**；MCP **89 个用例，PASSED 89，SKIPPED 0，FAILED 0**（61 个单测 + 28 个 golden 集成用例）。两者合计 166。
 
-库的测试在 `../pdf4cj/src/test/`（package `pdf4cj.test`），MCP 的测试在 `cangjie/src/tests/`：
+库的测试在 `../../pdf4cj/src/test/`（package `pdf4cj.test`），MCP 的测试在 `cangjie/src/tests/`：
 
 | 文件 | 覆盖 |
 |------|------|
-| `pdf4cj/src/test/content_test.cj` | 词切分、格式辅助、手写内容流的 `extractPage` 端到端 |
-| `pdf4cj/src/test/document_test.cj` | 损坏/截断文档、页面树引用环、悬空 `/Contents`、无 `/Contents`、`/Length` 越界与合法空页树（8 个回归用例） |
-| `pdf4cj/src/test/font_test.cj` | CMap、编码、宽度、标准 14 字体等 |
-| `pdf4cj/src/test/image_test.cj` | 格式识别、原始采样转 PNG、`/Decode`、非法布局 |
-| `pdf4cj/src/test/table_test.cj` | 有框线网格、空单元格、多行单元格、分离网格、无线文本 |
+| `../../pdf4cj/src/test/content_test.cj` | 词切分、格式辅助、手写内容流的 `extractPage` 端到端 |
+| `../../pdf4cj/src/test/document_test.cj` | 损坏/截断文档、页面树引用环、悬空 `/Contents`、无 `/Contents`、`/Length` 越界与合法空页树（8 个回归用例） |
+| `../../pdf4cj/src/test/font_test.cj` | CMap、编码、宽度、标准 14 字体等 |
+| `../../pdf4cj/src/test/image_test.cj` | 格式识别、原始采样转 PNG、`/Decode`、非法布局 |
+| `../../pdf4cj/src/test/table_test.cj` | 有框线网格、空单元格、多行单元格、分离网格、无线文本 |
 | `src/tests/export_test.cj` | JSON/CSV 结构、数字/颜色格式、文件名、对象类型过滤 |
 | `src/tests/tools_test.cj` | JSON 转义、浮点格式、路径校验、`DocumentManager` LRU/失效 |
 | `src/tests/integration_test.cj` | 28 个用例：逐 fixture 对比 Python golden（metadata/page/document/fonts/export JSON+CSV），并通过工具层验证错误文案 |
@@ -519,7 +520,7 @@ bash scripts/e2e-smoke.sh
 4. 对真实载荷断言：`tools/list` 的 `{name, description, inputSchema}` 形状、文本、表格、字体统计、图片字节、内联/落盘/临时文件三种导出、临时文件 `0600`、10 类错误文案、错误之后服务器仍能回答；
 5. 再**直接运行** `target/release/bin/pdf_inspector_mcp`，发 3 条请求，验证 stdout 每一行都是 JSON-RPC、启动 banner 只在 stderr。
 
-当前检出：**206 项检查全部通过**；主对话 31 条 JSON-RPC 响应（32 条请求中有 1 条通知），另 3 条直接运行构建产物的请求全部有响应，0 失败。需要 `cangjie/libs` 与 `pdf4cj/stdx` 两份 stdx 与仓库根 `.venv`（reportlab）；可用 `CJV`、`CJ_TOOLCHAIN`、`PDF_INSPECTOR_CJ_WORKDIR`、`PYTHON` 覆盖默认值。临时目录默认 `/tmp/pdf-inspector-cj`。直接运行构建产物那一步会自己把 `target/release/pdf4cj`（`libpdf4cj.so`）加进 `LD_LIBRARY_PATH`。
+当前检出：**206 项检查全部通过**；主对话 31 条 JSON-RPC 响应（32 条请求中有 1 条通知），另 3 条直接运行构建产物的请求全部有响应，0 失败。需要 `cangjie/libs` 与同级项目 `../../pdf4cj/stdx` 两份 stdx 与仓库根 `.venv`（reportlab）；可用 `CJV`、`CJ_TOOLCHAIN`、`PDF_INSPECTOR_CJ_WORKDIR`、`PYTHON` 覆盖默认值。临时目录默认 `/tmp/pdf-inspector-cj`。直接运行构建产物那一步会自己把 `target/release/pdf4cj`（`libpdf4cj.so`）加进 `LD_LIBRARY_PATH`。
 
 ### golden 与 fixtures
 
@@ -567,12 +568,12 @@ bash scripts/test-all.sh
 
 | 阶段 | 内容 |
 |------|------|
-| `pdf4cj cjpm test` | 在 `../pdf4cj` 里跑解析库自己的 61 个用例（MCP 导入的就是它） |
+| `pdf4cj cjpm test` | 在 `../../pdf4cj`（同级独立项目）里跑解析库自己的 77 个用例（MCP 导入的就是它） |
 | `cjpm build` | 编译 server 与调试驱动（连带构建 path 依赖 pdf4cj，产出 `libpdf4cj.so`） |
 | `cjpm test` | 单测 + golden 集成测试（89 个用例） |
 | `e2e-smoke` | 真实 stdio JSON-RPC 对话（206 项检查） |
 
-本机最新实测（`cjpm clean` 后的一次完整运行）：`pdf4cj cjpm test PASS (11s)`、`build PASS (42s)`、`test PASS (45s)`、`e2e PASS (44s)`，最终 `All stages passed.`，退出码 0。任一阶段失败时脚本会打印汇总并以该阶段的**非 0 状态**退出（不会再把失败吞成 0）。`libs/` 或 `pdf4cj/stdx/` 不存在时会先自动执行 `setup-stdx.sh`；脚本自己 `export CANGJIE_STDX_PATH`（指向 `pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1`），`CJV`/`CJ_TOOLCHAIN` 可覆盖默认工具链。
+本机最新实测（`cjpm clean` 后的一次完整运行）：`pdf4cj cjpm test PASS (11s)`、`build PASS (42s)`、`test PASS (45s)`、`e2e PASS (44s)`，最终 `All stages passed.`，退出码 0。任一阶段失败时脚本会打印汇总并以该阶段的**非 0 状态**退出（不会再把失败吞成 0）。`libs/` 或 `../../pdf4cj/stdx/` 不存在时会先自动执行 `setup-stdx.sh`；脚本自己 `export CANGJIE_STDX_PATH`（指向 `../../pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1`），`CJV`/`CJ_TOOLCHAIN` 可覆盖默认工具链。
 
 **不要同时运行两个构建/测试进程**：它们共享 `cangjie/target/`，会互相覆盖 magic 的 `.so`，产生 `file format not recognized`、`DSO missing from command line` 或 `Permission denied` 之类的链接/启动错误。上面的失败大多不是源码问题；等另一个进程结束后重跑即可（必要时 `cjpm clean` 再构建）。
 
@@ -601,7 +602,7 @@ bash scripts/test-all.sh
 9. **`stdx` 的 `JsonFloat` 固定 6 位小数**（`612.000000`），所以数字必须自己渲染，不能直接用 `JsonFloat`。
 10. **`@tool` 函数返回 `String`（JSON 文本）**，不是对象；MCP 层只把它塞进 `content[0].text`。这样工具 schema 与 Python 版一致，也避免依赖 magic 的结构化输出。
 11. **`Option<T>` 决定 required**：`tools/list` 先取 `tool.toJsonValue()` 的内部 schema，再把其中的 `parameters` 放到 MCP 的 `inputSchema` 下；它读的是 `ToolParameter.required`。不要直接把 `toJsonValue()` 原样返回——magic 的 `{name, description, parameters}` 不是 MCP 的 `{name, description, inputSchema}`。
-12. **生成文件不要手改**：`../pdf4cj/src/metrics_data.cj` 与 `../pdf4cj/src/encoding_data.cj` 由 `cangjie/scripts/gen_font_data.py` 生成（数据源：reportlab、pdfminer、Adobe Glyph List，输出 `package pdf4cj`），需要更新时跑脚本并在 `pdf4cj/` 里重新测试。
+12. **生成文件不要手改**：`../../pdf4cj/src/metrics_data.cj` 与 `../../pdf4cj/src/encoding_data.cj` 由 `cangjie/scripts/gen_font_data.py` 生成（数据源：reportlab、pdfminer、Adobe Glyph List，输出 `package pdf4cj`），需要更新时跑脚本并在同级项目 `../../pdf4cj/` 里重新测试。
 13. **构建慢/并发构建互相破坏**：`cjpm` 会构建 magic 的示例可执行文件；两个 `cjpm` 进程同时写 `cangjie/target/` 时会出现 `.so` 找不到、格式不认识或 `Permission denied`，等另一个进程结束再重跑（必要时 `cjpm clean`）。`cjpm test` 每次会先重建依赖，约 40–60 秒。
 14. **编译器警告**：`server.cj` 的字符串跨行 `+` 会报 `possibly confusing line terminator`；`tools.cj` 的 `std.posix.chmod` 在 LTS 1.0.0 是 deprecated。两条都可忽略；不要为了消警告改协议字符串，也不要因此去掉临时文件的权限收紧。
 

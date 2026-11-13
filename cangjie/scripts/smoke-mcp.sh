@@ -16,8 +16,9 @@ CJV="${CJV:-${HOME}/.cjv/bin/cjv}"
 TOOLCHAIN="${CJ_TOOLCHAIN:-lts-1.0.0}"
 STDX_DIR="${PROJECT_DIR}/libs/cangjie-stdx-linux-x64-1.0.0.1/linux_x86_64_llvm/dynamic/stdx"
 
-# pdf4cj (path dependency) resolves stdx through ${CANGJIE_STDX_PATH}.
-export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
+# pdf4cj (standalone sibling project, path dependency) resolves stdx through
+# ${CANGJIE_STDX_PATH}.
+export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/../pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
 
 cd "${PROJECT_DIR}"
 

@@ -37,8 +37,9 @@ PYTHON="${PYTHON:-${REPO_ROOT}/.venv/bin/python}"
 WORK_DIR="${PDF_INSPECTOR_CJ_WORKDIR:-/tmp/pdf-inspector-cj}"
 DRIVER="${WORK_DIR}/driver.py"
 
-# pdf4cj (path dependency) resolves stdx through ${CANGJIE_STDX_PATH}.
-export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
+# pdf4cj (standalone sibling project, path dependency) resolves stdx through
+# ${CANGJIE_STDX_PATH}.
+export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/../pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
 
 if [ ! -x "${PYTHON}" ]; then
     echo "error: ${PYTHON} is missing; create the venv and install the dev dependencies first" >&2

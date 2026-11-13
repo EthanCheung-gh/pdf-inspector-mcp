@@ -3,11 +3,13 @@
 #
 # Two stdx trees are involved:
 #
-#   1. cangjie/libs/...      - CangjieMagic's bin-dependency (see cjpm.toml);
-#   2. ../pdf4cj/stdx/...    - pdf4cj's stdx, resolved through the
-#                              ${CANGJIE_STDX_PATH} entries in pdf4cj/cjpm.toml.
-#                              pdf4cj is a path dependency, so its own
-#                              setup-stdx.sh is delegated to below.
+#   1. cangjie/libs/...         - CangjieMagic's bin-dependency (see cjpm.toml);
+#   2. ../../pdf4cj/stdx/...    - pdf4cj's stdx, resolved through the
+#                                 ${CANGJIE_STDX_PATH} entries in
+#                                 pdf4cj/cjpm.toml. pdf4cj is a standalone
+#                                 sibling project consumed as a path
+#                                 dependency, so its own setup-stdx.sh is
+#                                 delegated to below.
 #
 # Idempotent: when the unpacked tree is already present the download is skipped.
 set -euo pipefail
@@ -15,7 +17,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 LIBS_DIR="${PROJECT_DIR}/libs"
-PDF4CJ_DIR="$(cd "${PROJECT_DIR}/../pdf4cj" && pwd)"
+PDF4CJ_DIR="$(cd "${PROJECT_DIR}/../../pdf4cj" && pwd)"
 
 STDX_VERSION="1.0.0.1"
 STDX_NAME="cangjie-stdx-linux-x64-${STDX_VERSION}"
@@ -49,8 +51,9 @@ else
     echo "cangjie-stdx ${STDX_VERSION} ready at ${STDX_ROOT}"
 fi
 
-# pdf4cj is a path dependency and keeps its own stdx copy; let its script place
-# and report it so both trees stay in sync with one command.
+# pdf4cj is a standalone sibling project (../../pdf4cj) consumed as a path
+# dependency and keeps its own stdx copy; let its script place and report it so
+# both trees stay in sync with one command.
 if [ ! -f "${PDF4CJ_DIR}/scripts/setup-stdx.sh" ]; then
     echo "error: ${PDF4CJ_DIR}/scripts/setup-stdx.sh not found" >&2
     exit 1
