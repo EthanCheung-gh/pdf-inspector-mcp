@@ -3,7 +3,7 @@ package pdf_inspector_mcp.export
 import std.collection.*
 import std.convert.*
 import std.time.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * JSON rendering of extracted pages, mirroring `export.pages_to_json` in

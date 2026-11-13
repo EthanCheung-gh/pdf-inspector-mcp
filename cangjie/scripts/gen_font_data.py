@@ -3,8 +3,8 @@
 
 The script writes two generated sources:
 
-  cangjie/src/pdf/metrics_data.cj   -- Base14Metrics + base14Metrics()/normalizeBase14Name()
-  cangjie/src/pdf/encoding_data.cj  -- built-in encodings + glyphNameToUnicode()
+  pdf4cj/src/metrics_data.cj   -- Base14Metrics + base14Metrics()/normalizeBase14Name()
+  pdf4cj/src/encoding_data.cj  -- built-in encodings + glyphNameToUnicode()
 
 Data sources (read from the project's Python venv; no network access):
 
@@ -44,7 +44,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 VENV_PYTHON = REPO_ROOT / ".venv" / "bin" / "python"
-OUT_DIR = REPO_ROOT / "cangjie" / "src" / "pdf"
+OUT_DIR = REPO_ROOT / "pdf4cj" / "src"
 METRICS_PATH = OUT_DIR / "metrics_data.cj"
 ENCODING_PATH = OUT_DIR / "encoding_data.cj"
 
@@ -396,7 +396,7 @@ HEADER = """\
 # ---------------------------------------------------------------------------
 
 METRICS_HEADER = HEADER + """
-package pdf_inspector_mcp.pdf
+package pdf4cj
 
 import std.collection.*
 
@@ -605,7 +605,7 @@ public func normalizeBase14Name(name: String): String {
 # ---------------------------------------------------------------------------
 
 ENCODING_HEADER = HEADER + """
-package pdf_inspector_mcp.pdf
+package pdf4cj
 
 import std.collection.*
 

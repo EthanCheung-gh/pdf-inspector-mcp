@@ -8,6 +8,7 @@
 
 [dependencies]
   magic = { git = "https://gitcode.com/Cangjie-TPC/CangjieMagic.git", branch = "dev" }
+  pdf4cj = { path = "../pdf4cj" }
 
 # CangjieMagic depends on cangjie-stdx. Fetch it with scripts/setup-stdx.sh.
 [target.x86_64-unknown-linux-gnu.bin-dependencies]

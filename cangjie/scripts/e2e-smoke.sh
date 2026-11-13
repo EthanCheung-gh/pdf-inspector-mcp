@@ -37,6 +37,9 @@ PYTHON="${PYTHON:-${REPO_ROOT}/.venv/bin/python}"
 WORK_DIR="${PDF_INSPECTOR_CJ_WORKDIR:-/tmp/pdf-inspector-cj}"
 DRIVER="${WORK_DIR}/driver.py"
 
+# pdf4cj (path dependency) resolves stdx through ${CANGJIE_STDX_PATH}.
+export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
+
 if [ ! -x "${PYTHON}" ]; then
     echo "error: ${PYTHON} is missing; create the venv and install the dev dependencies first" >&2
     exit 1
@@ -802,7 +805,7 @@ fi
 echo "==> running the built binary directly (stdout purity)"
 BINARY="${PROJECT_DIR}/target/release/bin/pdf_inspector_mcp"
 RUNTIME_LIB_DIR="${HOME}/.cjv/toolchains/${TOOLCHAIN}/runtime/lib/linux_x86_64_llvm"
-BINARY_LIBS="${PROJECT_DIR}/target/release/magic:${PROJECT_DIR}/target/release/pdf_inspector_mcp:${STDX_DIR}:${RUNTIME_LIB_DIR}"
+BINARY_LIBS="${PROJECT_DIR}/target/release/magic:${PROJECT_DIR}/target/release/pdf4cj:${PROJECT_DIR}/target/release/pdf_inspector_mcp:${STDX_DIR}:${RUNTIME_LIB_DIR}"
 
 if [ ! -x "${BINARY}" ]; then
     echo "error: ${BINARY} is missing; the build did not produce the server binary" >&2

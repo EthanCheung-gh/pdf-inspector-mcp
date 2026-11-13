@@ -12,6 +12,12 @@
 - 构建/运行/差异说明：[cangjie/README.md](cangjie/README.md)
 - Python 版仍是默认实现与行为基线；仓颉版的已知差异见上述文档。
 
+解析内核同时抽成了独立库 `pdf4cj/`（`package pdf4cj`，纯仓颉、零 FFI、可单独 `cjpm build`）：
+它只做 PDF 结构解析与内容抽取，不含 MCP 协议层；`cangjie/` 通过 `pdf4cj = { path = "../pdf4cj" }`
+依赖它，因此同一份解析代码既能被 MCP 服务使用，也能被其它仓颉工程直接复用。库的文档见
+[pdf4cj/README.md](pdf4cj/README.md)，设计与 API 见 [pdf4cj/doc/design.md](pdf4cj/doc/design.md)、
+[pdf4cj/doc/feature_api.md](pdf4cj/doc/feature_api.md)。
+
 ## 与上游的关系
 
 本项目的解析与导出逻辑是 [pdf-inspector](https://github.com/EthanCheung-gh/pdf-inspector) **v0.2.0 的内联移植**，不是重新实现：

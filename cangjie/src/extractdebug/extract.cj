@@ -2,7 +2,7 @@ package pdf_inspector_mcp.extractdebug
 
 import std.collection.*
 import std.convert.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Manual smoke-test driver for the content-stream interpreter.

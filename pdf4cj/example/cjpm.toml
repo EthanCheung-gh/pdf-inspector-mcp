@@ -1,0 +1,26 @@
+[dependencies]
+  pdf4cj = { path = ".." }
+
+[package]
+  cjc-version = "1.0.0"
+  name = "pdf4cj_example"
+  version = "0.1.0"
+  description = "pdf4cj usage example: metadata, page objects and ruled tables"
+  authors = ["EthanCheung"]
+  license = ["MIT"]
+  output-type = "executable"
+  src-dir = "src"
+  exclude = ["target", "*.log"]
+
+# pdf4cj pulls zlib/base64 from cangjie-stdx; point CANGJIE_STDX_PATH at the
+# unpacked cangjie-stdx-<platform>-1.0.0.1 directory (see ../scripts/setup-stdx.sh).
+[target.x86_64-unknown-linux-gnu.bin-dependencies]
+  path-option = ["${CANGJIE_STDX_PATH}/linux_x86_64_llvm/dynamic/stdx"]
+[target.aarch64-unknown-linux-gnu.bin-dependencies]
+  path-option = ["${CANGJIE_STDX_PATH}/linux_aarch64_llvm/dynamic/stdx"]
+[target.x86_64-apple-darwin.bin-dependencies]
+  path-option = ["${CANGJIE_STDX_PATH}/darwin_x86_64_llvm/dynamic/stdx"]
+[target.aarch64-apple-darwin.bin-dependencies]
+  path-option = ["${CANGJIE_STDX_PATH}/darwin_aarch64_llvm/dynamic/stdx"]
+[target.x86_64-w64-mingw32.bin-dependencies]
+  path-option = ["${CANGJIE_STDX_PATH}/windows_x86_64_llvm/dynamic/stdx"]

@@ -1,7 +1,7 @@
 package pdf_inspector_mcp.export
 
 import std.collection.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * CSV rendering of extracted pages, mirroring `export.pages_to_csv` in

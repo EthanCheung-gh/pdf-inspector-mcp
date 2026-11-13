@@ -2,7 +2,7 @@ package pdf_inspector_mcp.mcp
 
 import std.collection.*
 import std.convert.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Hand-written JSON helpers for the MCP tool payloads.

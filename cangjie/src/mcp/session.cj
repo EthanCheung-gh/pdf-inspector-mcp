@@ -5,7 +5,7 @@ import std.convert.*
 import std.env.*
 import std.fs.*
 import std.time.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Path validation and the open-document cache behind the six tools.

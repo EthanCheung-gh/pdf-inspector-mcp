@@ -11,9 +11,13 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+REPO_ROOT="$(cd "${PROJECT_DIR}/.." && pwd)"
 CJV="${CJV:-${HOME}/.cjv/bin/cjv}"
 TOOLCHAIN="${CJ_TOOLCHAIN:-lts-1.0.0}"
 STDX_DIR="${PROJECT_DIR}/libs/cangjie-stdx-linux-x64-1.0.0.1/linux_x86_64_llvm/dynamic/stdx"
+
+# pdf4cj (path dependency) resolves stdx through ${CANGJIE_STDX_PATH}.
+export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${REPO_ROOT}/pdf4cj/stdx/cangjie-stdx-linux-x64-1.0.0.1}"
 
 cd "${PROJECT_DIR}"
 

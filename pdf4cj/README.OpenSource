@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "pdf4cj",
+        "License": "MIT",
+        "License File": "LICENSE",
+        "Version Number": "0.1.0",
+        "Owner": "EthanCheung",
+        "Upstream URL": "https://github.com/EthanCheung-gh/pdf-inspector-mcp",
+        "Description": "Pure Cangjie PDF structural parser and extractor (text, shapes, images, tables)."
+    }
+]

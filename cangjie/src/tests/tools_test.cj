@@ -8,7 +8,7 @@ import std.random.*
 import std.unittest.*
 import std.unittest.testmacro.*
 import pdf_inspector_mcp.mcp.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Unit tests for the MCP layer's pure parts: JSON/number/colour formatting

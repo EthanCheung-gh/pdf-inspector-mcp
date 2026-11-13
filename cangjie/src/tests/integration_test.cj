@@ -11,7 +11,7 @@ import stdx.encoding.json.*
 import magic.core.tool.{Tool, ToolException, ToolResponse}
 import pdf_inspector_mcp.export.*
 import pdf_inspector_mcp.mcp.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Golden integration tests: the Cangjie engine against the Python baseline.

@@ -1,7 +1,7 @@
 package pdf_inspector_mcp.debug
 
 import std.collection.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Manual smoke-test driver for the PDF core.

@@ -1,22 +1,33 @@
 #!/usr/bin/env bash
 # Run every check the Cangjie port has, in the order a reviewer expects:
 #
-#   1. cjpm build        - compile the server (and its debug helpers);
-#   2. cjpm test         - unit tests + the golden integration tests against the
+#   1. pdf4cj cjpm test  - the PDF library this server imports via a path
+#                          dependency, tested from ../pdf4cj first;
+#   2. cjpm build        - compile the server (and its debug helpers);
+#   3. cjpm test         - unit tests + the golden integration tests against the
 #                          committed Python baseline in tests/goldens/;
-#   3. e2e-smoke.sh      - drive the real stdio server over JSON-RPC.
+#   4. e2e-smoke.sh      - drive the real stdio server over JSON-RPC.
+#
+# A green run therefore covers both the library and the MCP layer.
 #
 # The stdx dependency is fetched on demand, so a clean checkout works without a
 # manual setup step. Usage: bash cangjie/scripts/test-all.sh
 #
-# Environment overrides: CJV, CJ_TOOLCHAIN.
+# Environment overrides: CJV, CJ_TOOLCHAIN, CANGJIE_STDX_PATH.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+REPO_ROOT="$(cd "${PROJECT_DIR}/.." && pwd)"
 CJV="${CJV:-${HOME}/.cjv/bin/cjv}"
 TOOLCHAIN="${CJ_TOOLCHAIN:-lts-1.0.0}"
 STDX_DIR="${PROJECT_DIR}/libs/cangjie-stdx-linux-x64-1.0.0.1/linux_x86_64_llvm/dynamic/stdx"
+LIB_DIR="${REPO_ROOT}/pdf4cj"
+LIB_STDX_DIR="${LIB_DIR}/stdx/cangjie-stdx-linux-x64-1.0.0.1"
+
+# pdf4cj/cjpm.toml resolves stdx through ${CANGJIE_STDX_PATH}; export it here so
+# both projects are built against the same unpacked tree.
+export CANGJIE_STDX_PATH="${CANGJIE_STDX_PATH:-${LIB_STDX_DIR}}"
 
 STAGE_NAMES=()
 STAGE_RESULTS=()
@@ -67,6 +78,16 @@ run_stdx_setup() {
     bash "${SCRIPT_DIR}/setup-stdx.sh"
 }
 
+# The path dependency is verified on its own first: its package (`pdf4cj`) is
+# what the MCP code imports, and a failure there should not be reported as an
+# MCP test failure. The subshell keeps `test-all.sh`'s cwd.
+run_library_tests() {
+    (
+        cd "${LIB_DIR}"
+        "${CJV}" run "${TOOLCHAIN}" cjpm test
+    )
+}
+
 run_build() {
     "${CJV}" run "${TOOLCHAIN}" cjpm build
 }
@@ -84,10 +105,11 @@ if [ ! -x "${CJV}" ]; then
     exit 1
 fi
 
-if [ ! -d "${STDX_DIR}" ]; then
+if [ ! -d "${STDX_DIR}" ] || [ ! -d "${LIB_STDX_DIR}" ]; then
     run_stage "setup-stdx" run_stdx_setup
 fi
 
+run_stage "pdf4cj cjpm test" run_library_tests
 run_stage "cjpm build" run_build
 run_stage "cjpm test" run_tests
 run_stage "e2e-smoke" run_e2e

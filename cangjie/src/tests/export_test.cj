@@ -5,7 +5,7 @@ import std.unittest.*
 import std.unittest.testmacro.*
 import stdx.encoding.json.*
 import pdf_inspector_mcp.export.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * Unit tests for the export layer (`json.cj`, `csv.cj`, `filename.cj`,

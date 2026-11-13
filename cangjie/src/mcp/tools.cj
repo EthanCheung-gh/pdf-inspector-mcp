@@ -8,7 +8,7 @@ import std.posix.chmod
 import std.random.Random
 import std.convert.*
 import pdf_inspector_mcp.export.*
-import pdf_inspector_mcp.pdf.*
+import pdf4cj.*
 
 /**
  * The six MCP tools of the Python `pdf-inspector-mcp` server, declared as
